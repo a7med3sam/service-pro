@@ -21,8 +21,8 @@ const DownloadProjects: React.FC = () => {
         border: "1px solid #eee",
       }}
     >
-      <Typography variant="h6" fontWeight={600} mb={2}>
-        Download Projects
+      <Typography variant="h6" fontWeight={300} mb={2}>
+        Completed Services
       </Typography>
 
       {/* File */}

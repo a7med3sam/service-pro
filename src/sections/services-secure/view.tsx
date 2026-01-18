@@ -8,6 +8,7 @@ import PersonalDataSection from "./PersonalDataSection";
 import OrderStatus from "./OrderStatus";
 import CommentSection from "./CommentSection";
 import DownloadProjects from "./DownloadProjects";
+import OrderCardPay from "./OrderCardPay";
 
 
 export default function ServicesSecureView() {
@@ -17,7 +18,8 @@ export default function ServicesSecureView() {
       <OrdersSectionSecure />
       <PersonalDataSection />
       <DocumentsUploadSection />
-      <OrderStatus />
+      <OrderCardPay />
+      {/* <OrderStatus /> */}
       <DownloadProjects />
       <CommentSection />
       <LocationSection />

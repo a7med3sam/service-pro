@@ -38,12 +38,10 @@ const OrderCardSecure = ({
   time: string;
   location: string;
 }) => {
-
   const router = useRouter();
-    
-      // const handleCheckout = () => {
-      //   router.push("/checkout");
-      // };
+
+  // حالة افتراضية للشريط السفلي
+  const status = "Documents Uploaded";
 
   return (
     <Card
@@ -94,9 +92,23 @@ const OrderCardSecure = ({
           </Stack>
         </Box>
       </Box>
+
+      {/* Status Bar */}
+      <Box
+        sx={{
+          backgroundColor: "#8b6a3e",
+          color: "#fff",
+          px: 3,
+          py: 1,
+          fontSize: 12,
+        }}
+      >
+        {status}
+      </Box>
     </Card>
   );
 };
+
 
 const OrdersSectionSecure = () => {
   const order = {
