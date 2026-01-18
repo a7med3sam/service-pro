@@ -41,9 +41,9 @@ const OrderCardSecure = ({
 
   const router = useRouter();
     
-      const handleCheckout = () => {
-        router.push("/checkout");
-      };
+      // const handleCheckout = () => {
+      //   router.push("/checkout");
+      // };
 
   return (
     <Card
@@ -93,30 +93,6 @@ const OrderCardSecure = ({
             <InfoItem icon={<LocationOnIcon />} text={location} />
           </Stack>
         </Box>
-      </Box>
-      {/* Pay Button */}
-      <Box
-        sx={{
-          px: 3,
-          pb: 2,
-          display: "flex",
-          justifyContent: "flex-end",
-        }}
-      >
-        <Button
-          variant="outlined"
-          size="small"
-          sx={{
-            textTransform: "none",
-            borderRadius: 2,
-            borderColor: "#8b6a3e",
-            color: "#8b6a3e",
-            fontWeight: 500,
-          }}
-          onClick={handleCheckout}
-        >
-          Pay
-        </Button>
       </Box>
     </Card>
   );
