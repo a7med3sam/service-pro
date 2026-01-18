@@ -77,7 +77,10 @@ const OrdersSection = () => {
   const router = useRouter();
 
   const handleEdit = () => {
-    router.push("/services-secure");
+    router.push("/order-details-edit");
+  };
+  const handlePrevious = () => {
+    router.push("/order-details-previous");
   };
 
   const InfoItem = ({
@@ -168,6 +171,7 @@ const OrdersSection = () => {
                     borderColor: "#8b6a3e",
                     color: "#8b6a3e",
                   }}
+                  onClick={handlePrevious}
                 >
                   Explore
                 </Button>
@@ -181,6 +185,7 @@ const OrdersSection = () => {
                     borderColor: "#8b6a3e",
                     color: "#8b6a3e",
                   }}
+                  onClick={handlePrevious}
                 >
                   Invoice
                 </Button>

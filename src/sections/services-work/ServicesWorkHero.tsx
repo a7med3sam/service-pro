@@ -52,7 +52,7 @@ const ServicesWorkHero = () => {
           regulations and timely processing.
         </Typography>
 
-        <Link href="/services-secure" passHref>
+        <Link href="/services-get-started" passHref>
           <Button
             variant="contained"
             size="large"

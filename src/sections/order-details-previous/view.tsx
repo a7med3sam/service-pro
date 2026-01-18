@@ -11,16 +11,16 @@ import DownloadProjects from "./DownloadProjects";
 import OrderCardPay from "./OrderCardPay";
 
 
-export default function ServicesSecureView() {
+export default function OrderDetailsPreviousView() {
   return (
     <>
       <AboutUsHero />
       <OrdersSectionSecure />
-      <PersonalDataSection />
+      <OrderStatus />
+      {/* <PersonalDataSection />
       <DocumentsUploadSection />
-      <OrderCardPay />
-      {/* <OrderStatus /> */}
-      <DownloadProjects />
+      <OrderCardPay /> */}
+      {/* <DownloadProjects /> */}
       <CommentSection />
       <LocationSection />
     </>
