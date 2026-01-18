@@ -1,10 +1,18 @@
 import React from "react";
-import { Box, Container, Typography, Card, Stack, IconButton } from "@mui/material";
+import {
+  Box,
+  Container,
+  Typography,
+  Card,
+  Stack,
+  IconButton,
+  Button,
+} from "@mui/material";
 import GroupsIcon from "@mui/icons-material/Groups";
 import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
-
+import { useRouter } from "next/navigation";
 
 const InfoItem = ({ icon, text }: { icon: React.ReactNode; text: string }) => (
   <Stack direction="row" spacing={0.5} alignItems="center">
@@ -22,7 +30,6 @@ const OrderCardSecure = ({
   date,
   time,
   location,
-
 }: {
   title: string;
   desc: string;
@@ -31,6 +38,13 @@ const OrderCardSecure = ({
   time: string;
   location: string;
 }) => {
+
+  const router = useRouter();
+    
+      const handleCheckout = () => {
+        router.push("/checkout");
+      };
+
   return (
     <Card
       elevation={0}
@@ -65,7 +79,11 @@ const OrderCardSecure = ({
         {/* Info */}
         <Box sx={{ flex: 1 }}>
           <Typography fontWeight={600}>{title}</Typography>
-          <Typography variant="body2" color="text.secondary" sx={{ mt: 0.5, mb: 2 }}>
+          <Typography
+            variant="body2"
+            color="text.secondary"
+            sx={{ mt: 0.5, mb: 2 }}
+          >
             {desc}
           </Typography>
           <Stack direction="row" spacing={2} flexWrap="wrap">
@@ -75,6 +93,30 @@ const OrderCardSecure = ({
             <InfoItem icon={<LocationOnIcon />} text={location} />
           </Stack>
         </Box>
+      </Box>
+      {/* Pay Button */}
+      <Box
+        sx={{
+          px: 3,
+          pb: 2,
+          display: "flex",
+          justifyContent: "flex-end",
+        }}
+      >
+        <Button
+          variant="outlined"
+          size="small"
+          sx={{
+            textTransform: "none",
+            borderRadius: 2,
+            borderColor: "#8b6a3e",
+            color: "#8b6a3e",
+            fontWeight: 500,
+          }}
+          onClick={handleCheckout}
+        >
+          Pay
+        </Button>
       </Box>
     </Card>
   );

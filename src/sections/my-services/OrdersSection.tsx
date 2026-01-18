@@ -14,6 +14,7 @@ import GroupsIcon from "@mui/icons-material/Groups";
 import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
+import { useRouter } from "next/navigation";
 
 const currentOrders = [
   {
@@ -71,11 +72,13 @@ const previousOrders = [
   },
 ];
 
-
 const OrdersSection = () => {
-
   const [tab, setTab] = React.useState(0);
+  const router = useRouter();
 
+  const handleEdit = () => {
+    router.push("/services-secure");
+  };
 
   const InfoItem = ({
     icon,
@@ -92,26 +95,25 @@ const OrdersSection = () => {
     </Stack>
   );
 
-const OrderCard = ({
-  title,
-  desc,
-  price,
-  date,
-  time,
-  location,
-  status,
-  isPrevious,
-}: {
-  title: string;
-  desc: string;
-  price: string;
-  date: string;
-  time: string;
-  location: string;
-  status: string;
-  isPrevious?: boolean;
-}) => (
-
+  const OrderCard = ({
+    title,
+    desc,
+    price,
+    date,
+    time,
+    location,
+    status,
+    isPrevious,
+  }: {
+    title: string;
+    desc: string;
+    price: string;
+    date: string;
+    time: string;
+    location: string;
+    status: string;
+    isPrevious?: boolean;
+  }) => (
     <Card
       elevation={0}
       sx={{
@@ -148,54 +150,57 @@ const OrderCard = ({
 
         {/* Info */}
         <Box sx={{ flex: 1 }}>
-          <Box display="flex" justifyContent="space-between" alignItems="center">
-  <Typography fontWeight={600}>{title}</Typography>
+          <Box
+            display="flex"
+            justifyContent="space-between"
+            alignItems="center"
+          >
+            <Typography fontWeight={600}>{title}</Typography>
 
-  {isPrevious ? (
-    <Stack direction="row" spacing={1}>
-  <Button
-    variant="outlined"
-    size="small"
-    sx={{
-      textTransform: "none",
-      borderRadius: 2,
-      borderColor: "#8b6a3e",
-      color: "#8b6a3e",
-    }}
-  >
-    Explore
-  </Button>
+            {isPrevious ? (
+              <Stack direction="row" spacing={1}>
+                <Button
+                  variant="outlined"
+                  size="small"
+                  sx={{
+                    textTransform: "none",
+                    borderRadius: 2,
+                    borderColor: "#8b6a3e",
+                    color: "#8b6a3e",
+                  }}
+                >
+                  Explore
+                </Button>
 
-  <Button
-    variant="outlined"
-    size="small"
-    sx={{
-      textTransform: "none",
-      borderRadius: 2,
-      borderColor: "#8b6a3e",
-      color: "#8b6a3e",
-    }}
-  >
-    Invoice
-  </Button>
-</Stack>
-
-  ) : (
-    <Button
-      variant="outlined"
-      size="small"
-      sx={{
-        textTransform: "none",
-        borderRadius: 2,
-        borderColor: "#8b6a3e",
-        color: "#8b6a3e",
-      }}
-    >
-      Edit
-    </Button>
-  )}
-</Box>
-
+                <Button
+                  variant="outlined"
+                  size="small"
+                  sx={{
+                    textTransform: "none",
+                    borderRadius: 2,
+                    borderColor: "#8b6a3e",
+                    color: "#8b6a3e",
+                  }}
+                >
+                  Invoice
+                </Button>
+              </Stack>
+            ) : (
+              <Button
+                variant="outlined"
+                size="small"
+                sx={{
+                  textTransform: "none",
+                  borderRadius: 2,
+                  borderColor: "#8b6a3e",
+                  color: "#8b6a3e",
+                }}
+                onClick={handleEdit}
+              >
+                Edit
+              </Button>
+            )}
+          </Box>
 
           <Typography
             variant="body2"
@@ -234,41 +239,35 @@ const OrderCard = ({
       <Container maxWidth="md">
         {/* Tabs */}
         <Tabs
-  value={tab}
-  onChange={(_, newValue) => setTab(newValue)}
-  centered
-  sx={{
-    mb: 5,
-    "& .MuiTab-root": {
-      textTransform: "none",
-      borderRadius: 2,
-      mx: 1,
-    },
-    "& .MuiTab-root.Mui-selected": {
-      backgroundColor: "#8b6a3e",
-      color: "#fff",
-    },
-    "& .MuiTabs-indicator": {
-      display: "none",
-    },
-  }}
->
-  <Tab label="Current orders" />
-  <Tab label="Previous orders" />
-</Tabs>
-
+          value={tab}
+          onChange={(_, newValue) => setTab(newValue)}
+          centered
+          sx={{
+            mb: 5,
+            "& .MuiTab-root": {
+              textTransform: "none",
+              borderRadius: 2,
+              mx: 1,
+            },
+            "& .MuiTab-root.Mui-selected": {
+              backgroundColor: "#8b6a3e",
+              color: "#fff",
+            },
+            "& .MuiTabs-indicator": {
+              display: "none",
+            },
+          }}
+        >
+          <Tab label="Current orders" />
+          <Tab label="Previous orders" />
+        </Tabs>
 
         {/* Orders */}
         <Stack spacing={4}>
-  {(tab === 0 ? currentOrders : previousOrders).map((order) => (
-    <OrderCard
-      key={order.id}
-      {...order}
-      isPrevious={tab === 1}
-    />
-  ))}
-</Stack>
-
+          {(tab === 0 ? currentOrders : previousOrders).map((order) => (
+            <OrderCard key={order.id} {...order} isPrevious={tab === 1} />
+          ))}
+        </Stack>
       </Container>
     </Box>
   );
