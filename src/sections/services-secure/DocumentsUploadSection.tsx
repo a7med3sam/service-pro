@@ -11,6 +11,7 @@ import {
   Button,
   Paper,
 } from "@mui/material";
+import { useRouter } from "next/navigation";
 
 const documents = [
   {
@@ -48,6 +49,14 @@ const documents = [
 ];
 
 export default function DocumentsUploadSection() {
+
+    const router = useRouter();
+  
+    const handleCheckout = () => {
+      router.push("/checkout");
+    };
+
+
   return (
     <Box sx={{ py: 10 }}>
       <Container maxWidth="md">
@@ -161,6 +170,7 @@ export default function DocumentsUploadSection() {
                 backgroundColor: "#7A6441",
               },
             }}
+            onClick={handleCheckout}
           >
             Proceed to checkout
           </Button>

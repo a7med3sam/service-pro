@@ -1,5 +1,6 @@
 import React from "react";
 import { Box, Typography, Button, Container } from "@mui/material";
+import Link from "next/link";
 
 const Hero = () => {
   return (
@@ -45,6 +46,7 @@ const Hero = () => {
       transparency.
     </Typography>
 
+    <Link href="/services" passHref>
     <Button
       variant="contained"
       size="large"
@@ -60,6 +62,7 @@ const Hero = () => {
     >
       Start Your Service
     </Button>
+    </Link>
   </Container>
 </Box>
 
