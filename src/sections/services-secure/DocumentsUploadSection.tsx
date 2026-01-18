@@ -11,7 +11,19 @@ import {
   Button,
   Paper,
 } from "@mui/material";
+import React, { useState } from "react";
+import UploadDialog from "./UploadDialog";
+
 import { useRouter } from "next/navigation";
+
+interface Document {
+  id: number;
+  name: string;
+  date: string;
+  days: string;
+  remarks: string;
+  status: string;
+}
 
 const documents = [
   {
@@ -49,13 +61,43 @@ const documents = [
 ];
 
 export default function DocumentsUploadSection() {
+  const router = useRouter();
 
-    const router = useRouter();
-  
-    const handleCheckout = () => {
-      router.push("/checkout");
+  const handleCheckout = () => {
+    router.push("/checkout");
+  };
+  const [openDialog, setOpenDialog] = useState(false);
+  const [selectedDoc, setSelectedDoc] = React.useState<Document | null>(null);
+
+  const handleUploadClick = (doc: Document) => {
+    setSelectedDoc(doc);
+    setOpenDialog(true);
+  };
+
+  const handleCloseDialog = () => setOpenDialog(false);
+
+  const handleContinue = () => {
+    handleCloseDialog();
+
+    const fileInput = document.createElement("input");
+    fileInput.type = "file";
+    fileInput.accept = ".pdf,image/*,.xls,.xlsx";
+
+    fileInput.onchange = (e: Event) => {
+      const target = e.target as HTMLInputElement;
+      const file = target.files?.[0];
+      if (!file) return;
+
+      if (file.size > 5 * 1024 * 1024) {
+        alert("File too large! Max 5MB.");
+        return;
+      }
+
+      alert(`Selected file: ${file.name}`);
     };
 
+    fileInput.click();
+  };
 
   return (
     <Box sx={{ py: 10 }}>
@@ -122,6 +164,7 @@ export default function DocumentsUploadSection() {
                           backgroundColor: "#7A6441",
                         },
                       }}
+                      onClick={() => handleUploadClick(doc)} // ✅ مرر doc مباشرة
                     >
                       Upload
                     </Button>
@@ -176,6 +219,12 @@ export default function DocumentsUploadSection() {
           </Button>
         </Box>
       </Container>
+      <UploadDialog
+        open={openDialog}
+        onClose={handleCloseDialog}
+        onContinue={handleContinue}
+        documentName={selectedDoc?.name}
+      />
     </Box>
   );
 }
