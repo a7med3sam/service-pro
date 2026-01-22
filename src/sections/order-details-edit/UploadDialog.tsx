@@ -14,13 +14,17 @@ import InsertDriveFileOutlinedIcon from "@mui/icons-material/InsertDriveFileOutl
 interface UploadDialogProps {
   open: boolean;
   onClose: () => void;
-  onDone: (file: File | null) => void;
+  onDone?: (file: File | null) => void;
+  onContinue: () => void;
+  documentName?: string;
 }
 
 const UploadDialog: React.FC<UploadDialogProps> = ({
   open,
   onClose,
   onDone,
+  onContinue,
+  documentName,
 }) => {
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [file, setFile] = useState<File | null>(null);
