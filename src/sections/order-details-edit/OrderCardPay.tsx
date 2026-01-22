@@ -8,7 +8,7 @@ import {
   Button,
   Container,
 } from "@mui/material";
-import AttachMoneyIcon from "@mui/icons-material/AttachMoney"; // أيقونة الفلوس
+import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
@@ -18,10 +18,9 @@ const OrderCardPay = () => {
   const router = useRouter();
 
   const handlePay = () => {
-    router.push("/checkout"); 
+    router.push("/checkout");
   };
 
-  
   const order = {
     title: "Work Permit Issuance",
     desc: "This is a secure order card example.",
@@ -42,9 +41,7 @@ const OrderCardPay = () => {
           background: "linear-gradient(90deg, #f6ebda 0%, #faf6ef 100%)",
         }}
       >
-        {/* محتوى الكارد */}
         <Box sx={{ p: 3, display: "flex", gap: 3 }}>
-          {/* أيقونة */}
           <Box
             sx={{
               width: 64,
@@ -56,10 +53,21 @@ const OrderCardPay = () => {
               justifyContent: "center",
             }}
           >
-            <AttachMoneyIcon sx={{ fontSize: 48, color: "#8b6a3e" }} />
+            {/* <AttachMoneyIcon sx={{ fontSize: 48, color: "#8b6a3e" }} /> */}
+            {/* Icon */}
+            <Box
+              component="img"
+              src="/assets/icons/tdesign--money.svg"
+              alt="upload icon"
+              sx={{
+                width: 48,
+                height: 48,
+                objectFit: "contain",
+                mb: 1,
+              }}
+            />
           </Box>
 
-          {/* المعلومات */}
           <Box sx={{ flex: 1 }}>
             <Box
               display="flex"
@@ -122,7 +130,6 @@ const OrderCardPay = () => {
           </Box>
         </Box>
 
-        {/* شريط الحالة السفلي */}
         <Box
           sx={{
             backgroundColor: "#8b6a3e",
@@ -131,9 +138,7 @@ const OrderCardPay = () => {
             py: 1,
             fontSize: 12,
           }}
-        >
-          {/* {order?.status} */}
-        </Box>
+        ></Box>
       </Card>
     </Container>
   );
