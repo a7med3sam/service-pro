@@ -10,7 +10,7 @@ export default function MyServicesView() {
     <>
       <AboutUsHero />
       <OrdersSection />
-      <SupportSection />
+      {/* <SupportSection /> */}
       <LocationSection />
       <SupportSection />
     </>
