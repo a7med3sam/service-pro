@@ -139,7 +139,7 @@ const LocationSection = () => {
           >
             <iframe
               title="map"
-              src="https://www.openstreetmap.org/export/embed.html"
+              src="https://www.openstreetmap.org/export/embed.html?bbox=55.2708%2C25.2048%2C55.2718%2C25.2058&layer=mapnik&marker=25.2048%2C55.2715"
               width="100%"
               height="100%"
               style={{ border: 0 }}
