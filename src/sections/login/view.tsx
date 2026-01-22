@@ -12,8 +12,19 @@ import {
 import GoogleIcon from "@mui/icons-material/Google";
 import FacebookIcon from "@mui/icons-material/Facebook";
 
+import { useRouter } from "next/navigation";
+
 export default function LoginPage() {
   const [isSignup, setIsSignup] = useState(false);
+  const router = useRouter();
+
+  const handleLogin = () => {
+    
+    document.cookie = "isLoggedIn=true; path=/; max-age=3600; SameSite=Lax";
+
+    
+    router.replace("/my-services");
+  };
 
   return (
     <Box
@@ -143,10 +154,7 @@ export default function LoginPage() {
                 alignItems="center"
                 mb={3}
               >
-                <FormControlLabel
-                  control={<Checkbox />}
-                  label="Remember me"
-                />
+                <FormControlLabel control={<Checkbox />} label="Remember me" />
 
                 <Typography
                   sx={{
@@ -163,13 +171,13 @@ export default function LoginPage() {
             {/* Submit Button */}
             <Button
               fullWidth
-              sx={{
-                bgcolor: "#8D744C",
-                color: "#fff",
-                py: 1.5,
-                borderRadius: "10px",
-                fontWeight: 600,
-                "&:hover": { bgcolor: "#7a6341" },
+              sx={{ bgcolor: "#8D744C", color: "#fff" }}
+              onClick={async () => {
+                await fetch("/api/login", { method: "POST" });
+
+                document.cookie = "isLoggedIn=true; path=/; max-age=3600";
+
+                router.replace("/my-services");
               }}
             >
               {isSignup ? "GET STARTED" : "CONTINUE"}

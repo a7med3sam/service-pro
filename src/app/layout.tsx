@@ -1,4 +1,4 @@
-// app/layout.tsx
+
 "use client";
 
 import ThemeRegistry from "./themeRegistry";
@@ -8,7 +8,7 @@ import { usePathname } from "next/navigation";
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
-  const hideHeaderFooter = pathname === "/login"; // اخفاء الهيدر والفوتر في صفحة login فقط
+  const hideHeaderFooter = pathname === "/login";
 
   return (
     <html lang="ar">
