@@ -57,7 +57,7 @@ const CommentSection: React.FC = () => {
   return (
     <Box maxWidth={800} mx="auto" px={2}>
       {/* Leave a Reply */}
-      <Typography variant="h6" fontWeight={300} mb={1}>
+      {/* <Typography variant="h6" fontWeight={300} mb={1}>
         Leave a Reply:
       </Typography>
 
@@ -68,9 +68,9 @@ const CommentSection: React.FC = () => {
         placeholder="Your Comment"
         value={comment}
         onChange={(e) => setComment(e.target.value)}
-      />
+      /> */}
 
-      <Box mt={2} textAlign="center">
+      {/* <Box mt={2} textAlign="center">
         <Button
           variant="contained"
           sx={{
@@ -84,7 +84,7 @@ const CommentSection: React.FC = () => {
         >
           Post Comment
         </Button>
-      </Box>
+      </Box> */}
 
       {/* Comments */}
       <Box mt={6}>

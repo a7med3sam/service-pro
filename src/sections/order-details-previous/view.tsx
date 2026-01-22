@@ -5,6 +5,8 @@ import LocationSection from "@/components/Location/LocationSection";
 import OrdersSectionSecure from "./OrdersSectionSecure";
 import OrderStatus from "./OrderStatus";
 import CommentSection from "./CommentSection";
+import DocumentsListSection from "./DocumentsListSection";
+import PersonalDataSection from "./PersonalDataSection";
 
 
 export default function OrderDetailsPreviousView() {
@@ -13,8 +15,9 @@ export default function OrderDetailsPreviousView() {
       <AboutUsHero />
       <OrdersSectionSecure />
       <OrderStatus />
-      {/* <PersonalDataSection />
-      <DocumentsUploadSection />
+      <PersonalDataSection />
+      <DocumentsListSection />
+      {/* <DocumentsUploadSection />
       <OrderCardPay /> */}
       {/* <DownloadProjects /> */}
       <CommentSection />
