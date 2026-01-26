@@ -30,11 +30,19 @@ import LanguageIcon from "@mui/icons-material/Language";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 
 const navItems = [
-  { label: "Home", path: "/" },
-  { label: "About Us", path: "/about" },
-  { label: "Services", path: "/services" },
-  { label: "Contact Us", path: "/contact" },
-  // { label: "Profile", path: "/profile" },
+  { label: "Home", paths: ["/"] },
+  { label: "About Us", paths: ["/about"] },
+  {
+    label: "Services",
+    paths: ["/services", "/services-work", "/services-get-started"],
+  },
+  { label: "Contact Us", paths: ["/contact"] },
+];
+
+const myServicesPaths = [
+  "/my-services",
+  "/order-details-edit",
+  "/order-details-previous",
 ];
 
 const Header = () => {
@@ -122,15 +130,21 @@ const Header = () => {
                 {[
                   ...navItems,
                   ...(isLoggedIn
-                    ? [{ label: "My Services", path: "/my-services" }]
+                    ? [{ label: "My Services", paths: myServicesPaths }]
                     : []),
                 ].map((item) => {
-                  const isActive = pathname === item.path;
+                  const isActive = item.paths.some((path) => {
+                    if (path === "/") {
+                      return pathname === "/";
+                    }
+                    return pathname.startsWith(path);
+                  });
+
                   return (
                     <Button
                       key={item.label}
                       component={Link}
-                      href={item.path}
+                      href={item.paths[0]}
                       sx={{
                         color: isActive ? "primary" : "#999696",
                         fontWeight: isActive ? 700 : 600,
@@ -344,13 +358,24 @@ const Header = () => {
           </Box>
           <Divider />
           <List>
-            {navItems.map((item) => {
-              const isActive = pathname === item.path;
+            {[
+              ...navItems,
+              ...(isLoggedIn
+                ? [{ label: "My Services", paths: myServicesPaths }]
+                : []),
+            ].map((item) => {
+              const isActive = item.paths.some((path) => {
+                if (path === "/") {
+                  return pathname === "/";
+                }
+                return pathname.startsWith(path);
+              });
+
               return (
-                <ListItem key={item.path} disablePadding>
+                <ListItem key={item.label} disablePadding>
                   <ListItemButton
                     component={Link}
-                    href={item.path}
+                    href={item.paths[0]}
                     onClick={() => setOpen(false)}
                     sx={{
                       backgroundColor: isActive ? "#f5f5f5" : "transparent",
@@ -366,6 +391,7 @@ const Header = () => {
               );
             })}
           </List>
+
           <Divider />
           <Box
             sx={{

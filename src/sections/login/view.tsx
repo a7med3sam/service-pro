@@ -1,3 +1,5 @@
+"use client";
+
 import { useState } from "react";
 import {
   Box,
@@ -9,21 +11,26 @@ import {
   FormControlLabel,
   Divider,
 } from "@mui/material";
+import { useRouter, useSearchParams } from "next/navigation";
+
 import GoogleIcon from "@mui/icons-material/Google";
 import FacebookIcon from "@mui/icons-material/Facebook";
-
-import { useRouter } from "next/navigation";
 
 export default function LoginPage() {
   const [isSignup, setIsSignup] = useState(false);
   const router = useRouter();
 
-  const handleLogin = () => {
-    
+  const searchParams = useSearchParams();
+  const redirect = searchParams.get("redirect");
+
+  const handleLogin = async () => {
     document.cookie = "isLoggedIn=true; path=/; max-age=3600; SameSite=Lax";
 
-    
-    router.replace("/my-services");
+    if (redirect) {
+      router.replace(redirect);
+    } else {
+      router.replace("/");
+    }
   };
 
   return (
@@ -172,13 +179,14 @@ export default function LoginPage() {
             <Button
               fullWidth
               sx={{ bgcolor: "#8D744C", color: "#fff" }}
-              onClick={async () => {
-                await fetch("/api/login", { method: "POST" });
+              // onClick={async () => {
+              //   await fetch("/api/login", { method: "POST" });
 
-                document.cookie = "isLoggedIn=true; path=/; max-age=3600";
+              //   document.cookie = "isLoggedIn=true; path=/; max-age=3600";
 
-                router.replace("/my-services");
-              }}
+              //   router.replace("/");
+              // }}
+              onClick={handleLogin}
             >
               {isSignup ? "GET STARTED" : "CONTINUE"}
             </Button>

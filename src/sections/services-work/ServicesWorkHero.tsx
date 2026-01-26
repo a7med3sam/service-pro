@@ -1,8 +1,24 @@
+"use client";
+
 import React from "react";
 import { Box, Typography, Button, Container } from "@mui/material";
-import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 const ServicesWorkHero = () => {
+  const router = useRouter();
+
+  const isLoggedIn =
+    typeof window !== "undefined" &&
+    document.cookie.includes("isLoggedIn=true");
+
+  const handleGetStarted = () => {
+    if (!isLoggedIn) {
+      router.push(`/login?redirect=/services-get-started`);
+    } else {
+      router.push("/services-get-started");
+    }
+  };
+
   return (
     <Box
       sx={{
@@ -52,23 +68,22 @@ const ServicesWorkHero = () => {
           regulations and timely processing.
         </Typography>
 
-        <Link href="/services-get-started" passHref>
-          <Button
-            variant="contained"
-            size="large"
-            sx={{
-              backgroundColor: "#8b6b3d",
-              px: 4,
-              py: 1.5,
-              borderRadius: 3,
-              "&:hover": {
-                backgroundColor: "#745832",
-              },
-            }}
-          >
-            Get Started
-          </Button>
-        </Link>
+        <Button
+          variant="contained"
+          size="large"
+          sx={{
+            backgroundColor: "#8b6b3d",
+            px: 4,
+            py: 1.5,
+            borderRadius: 3,
+            "&:hover": {
+              backgroundColor: "#745832",
+            },
+          }}
+          onClick={handleGetStarted}
+        >
+          Get Started
+        </Button>
       </Container>
     </Box>
   );
