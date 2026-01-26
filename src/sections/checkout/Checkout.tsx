@@ -9,6 +9,7 @@ import {
   Divider,
   Container,
 } from "@mui/material";
+import Link from "next/link";
 
 const Checkout = () => {
   return (
@@ -91,6 +92,7 @@ const Checkout = () => {
               <Typography fontWeight="bold">AED 1650</Typography>
             </Box>
 
+            <Link href="/my-services" passHref>
             <Button
               fullWidth
               size="large"
@@ -102,6 +104,7 @@ const Checkout = () => {
             >
               Pay
             </Button>
+            </Link>
           </Paper>
         </Grid>
       </Grid>
