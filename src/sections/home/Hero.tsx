@@ -61,7 +61,6 @@ const Hero = () => {
           transparency.
         </Typography>
 
-        {/* الزر */}
         <Link href="/services" passHref>
           <Button
             variant="contained"

@@ -36,7 +36,6 @@ const navItems = [
     label: "Services",
     paths: ["/services", "/services-work", "/services-get-started"],
   },
-  { label: "Contact Us", paths: ["/contact"] },
 ];
 
 const myServicesPaths = [
@@ -44,6 +43,8 @@ const myServicesPaths = [
   "/order-details-edit",
   "/order-details-previous",
 ];
+
+const contactItem = { label: "Contact Us", paths: ["/contact"] };
 
 const Header = () => {
   const [open, setOpen] = useState(false);
@@ -132,6 +133,7 @@ const Header = () => {
                   ...(isLoggedIn
                     ? [{ label: "My Services", paths: myServicesPaths }]
                     : []),
+                  contactItem,
                 ].map((item) => {
                   const isActive = item.paths.some((path) => {
                     if (path === "/") {
@@ -363,6 +365,7 @@ const Header = () => {
               ...(isLoggedIn
                 ? [{ label: "My Services", paths: myServicesPaths }]
                 : []),
+              contactItem,
             ].map((item) => {
               const isActive = item.paths.some((path) => {
                 if (path === "/") {
