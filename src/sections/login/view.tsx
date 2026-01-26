@@ -23,7 +23,7 @@ export default function LoginPage() {
     document.cookie = "isLoggedIn=true; path=/; max-age=3600; SameSite=Lax";
 
     
-    router.replace("/my-services");
+    router.replace("/");
   };
 
   return (
@@ -177,7 +177,7 @@ export default function LoginPage() {
 
                 document.cookie = "isLoggedIn=true; path=/; max-age=3600";
 
-                router.replace("/my-services");
+                router.replace("/");
               }}
             >
               {isSignup ? "GET STARTED" : "CONTINUE"}
