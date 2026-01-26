@@ -1,5 +1,6 @@
 import React from "react";
 import { Box, Typography, Button, Container } from "@mui/material";
+import Link from "next/link";
 
 const AboutUsHero = () => {
   return (
@@ -35,31 +36,32 @@ const AboutUsHero = () => {
       alignItems: "center",
     }}
   >
-    <Typography variant="h2" fontWeight="bold" gutterBottom>
-      Your Trusted Gateway to <br /> Government Services
+    <Typography variant="h3" fontWeight="bold" gutterBottom>
+      Committed to Delivering <br /> Trusted Government Services
     </Typography>
 
     <Typography sx={{ maxWidth: 600, mb: 4, fontSize: 16 }}>
-      A secure and streamlined platform that helps you submit requests,
-      upload documents, and track your government service progress with full
-      transparency.
+      We simplify complex government procedures by offering reliable support, document handling, 
+      and transparent tracking—ensuring your applications are processed accurately and on time.
     </Typography>
 
-    <Button
-      variant="contained"
-      size="large"
-      sx={{
-        backgroundColor: "#8b6b3d",
-        px: 4,
-        py: 1.5,
-        borderRadius: 3,
-        "&:hover": {
-          backgroundColor: "#745832",
-        },
-      }}
-    >
-      Start Your Service
-    </Button>
+    <Link href="/services" passHref>
+          <Button
+            variant="contained"
+            size="large"
+            sx={{
+              backgroundColor: "#8b6b3d",
+              px: 4,
+              py: 1.5,
+              borderRadius: 3,
+              "&:hover": {
+                backgroundColor: "#745832",
+              },
+            }}
+          >
+            Start Your Service
+          </Button>
+        </Link>
   </Container>
 </Box>
 
