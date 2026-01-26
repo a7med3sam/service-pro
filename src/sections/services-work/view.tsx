@@ -1,7 +1,7 @@
 "use client";
 
 import ServicesWorkHero from "./ServicesWorkHero";
-import ServicesSection from "@/components/ServicesSection/ServicesSection";
+import ServicesSection from "./ServicesSection";
 import LocationSection from "@/components/Location/LocationSection";
 import SupportSection from "./SupportSection";
 import TestimonialsSection from "./TestimonialsSection";
