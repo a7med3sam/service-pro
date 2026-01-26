@@ -1,4 +1,5 @@
 import { Box, Typography, Paper } from "@mui/material";
+import Link from "next/link";
 
 const categories = [
   {
@@ -45,7 +46,12 @@ export default function OurCategory() {
       </Typography>
 
       <Box display="flex" flexDirection="column" gap={3}>
-        {categories.map((item, i) => (
+         {categories.map((item, i) => (
+          <Link
+            key={i}
+            href="/services"
+            style={{ textDecoration: "none" }}
+          >
           <Paper
             key={i}
             elevation={0}
@@ -101,6 +107,7 @@ export default function OurCategory() {
               </Typography>
             </Box>
           </Paper>
+          </Link>
         ))}
       </Box>
     </Box>
