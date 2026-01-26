@@ -34,7 +34,7 @@ const navItems = [
   { label: "About Us", path: "/about" },
   { label: "Services", path: "/services" },
   { label: "Contact Us", path: "/contact" },
-  { label: "Profile", path: "/profile" },
+  // { label: "Profile", path: "/profile" },
 ];
 
 const Header = () => {
@@ -119,7 +119,12 @@ const Header = () => {
 
               {/* Desktop Navigation */}
               <Box sx={{ display: { xs: "none", md: "flex" }, gap: 3 }}>
-                {navItems.map((item) => {
+                {[
+                  ...navItems,
+                  ...(isLoggedIn
+                    ? [{ label: "My Services", path: "/my-services" }]
+                    : []),
+                ].map((item) => {
                   const isActive = pathname === item.path;
                   return (
                     <Button

@@ -13,7 +13,6 @@ const FeaturesSection = () => {
       description:
         "We verify all required documents to ensure they meet official standards, preventing delays and rejections.",
       image: "/assets/home/AccurateDocumentReview.png",
-      highlighted: true,
     },
     {
       title: "Fast & Reliable Processing",
@@ -42,7 +41,7 @@ const FeaturesSection = () => {
       >
         <Typography
           sx={{
-            fontFamily: "Roboto",
+            // fontFamily: "Roboto",
             fontWeight: 600,
             fontSize: { xs: "28px", md: "36px" },
             lineHeight: "44px",
@@ -55,7 +54,7 @@ const FeaturesSection = () => {
 
         <Typography
           sx={{
-            fontFamily: "Roboto",
+            // fontFamily: "Roboto",
             fontWeight: 400,
             fontSize: "16px",
             lineHeight: "26px",
@@ -70,31 +69,33 @@ const FeaturesSection = () => {
 
       {/* 🔹 Cards */}
       {features.map((item, index) => {
-        const isHighlighted = item.highlighted;
 
         return (
           <Card
-            key={index}
-            elevation={0}
-            sx={{
-              display: "flex",
-              alignItems: "center",
-              p: "24px",
-              mb: 3,
-              borderRadius: "20px",
-              flexDirection: { xs: "column", sm: "row" },
+  key={index}
+  elevation={0}
+  sx={{
+    display: "flex",
+    alignItems: "center",
+    p: "24px",
+    mb: 3,
+    borderRadius: "20px",
+    flexDirection: { xs: "column", sm: "row" },
 
-              background: isHighlighted
-                ? "linear-gradient(180deg, #F2E4CE 0%, #F7F7F7 50%, #EDE3D2 100%)"
-                : "#FFFFFF",
+    background: "#FFFFFF",
+    boxShadow: "0 4px 12px rgba(0,0,0,0.05)",
+    transition: "all 0.3s ease",
 
-              boxShadow: isHighlighted
-                ? "0px 4px 4px rgba(88, 67, 34, 0.2)"
-                : "0 4px 12px rgba(0,0,0,0.05)",
+    "&:hover": {
+      background:
+        "linear-gradient(180deg, #F2E4CE 0%, #F7F7F7 50%, #EDE3D2 100%)",
+      boxShadow: "0px 8px 20px rgba(88, 67, 34, 0.2)",
+      backdropFilter: "blur(6px)",
+      transform: "translateY(-3px)",
+    },
+  }}
+>
 
-              backdropFilter: isHighlighted ? "blur(6px)" : "none",
-            }}
-          >
             {/* Image */}
             <Box
               component="img"
@@ -114,21 +115,22 @@ const FeaturesSection = () => {
             {/* Text */}
             <CardContent sx={{ p: 0 }}>
               <Typography
-                sx={{
-                  fontFamily: "Roboto",
-                  fontWeight: 500,
-                  fontSize: isHighlighted ? "36px" : "20px",
-                  lineHeight: isHighlighted ? "32px" : "28px",
-                  color: "#0D0D0D",
-                  mb: "12px",
-                }}
-              >
-                {item.title}
-              </Typography>
+  sx={{
+    // fontFamily: "Roboto",
+    fontWeight: 500,
+    fontSize: "20px",
+    lineHeight: "28px",
+    color: "#0D0D0D",
+    mb: "12px",
+  }}
+>
+  {item.title}
+</Typography>
+
 
               <Typography
                 sx={{
-                  fontFamily: "Roboto",
+                  // fontFamily: "Roboto",
                   fontWeight: 400,
                   fontSize: "16px",
                   lineHeight: "24px",

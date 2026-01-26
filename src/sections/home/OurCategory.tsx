@@ -5,7 +5,6 @@ const categories = [
     title: "Family Visa Services",
     desc: "We verify all required documents to ensure they meet official standards, preventing delays and rejections.",
     icon: "/assets/icons/stash_people-group-light.svg",
-    active: true,
   },
   {
     title: "Company Startup & Renewal",
@@ -37,7 +36,7 @@ export default function OurCategory() {
           WebkitTextFillColor: "transparent",
         }}
       >
-        Our category
+        Our Categories
       </Typography>
 
       <Typography color="text.secondary" mt={1} mb={5}>
@@ -57,25 +56,17 @@ export default function OurCategory() {
               gap: "32px",
               borderRadius: "20px",
               width: "100%",
+              background: "#FFFFFF",
+              boxShadow: "0px 4px 12px rgba(0,0,0,0.08)",
+              transition: "all 0.3s ease",
 
-              transition: "0.3s",
-
-              background: item.active
-                ? "linear-gradient(90deg, #F2E4CE 0%, #F7F7F7 50%, #EDE3D2 100%)"
-                : "#FFFFFF",
-
-              boxShadow: item.active
-                ? "0px 4px 4px rgba(88, 67, 34, 0.2)"
-                : "0px 4px 12px rgba(0,0,0,0.08)",
-
-              backdropFilter: item.active ? "blur(6px)" : "none",
-
-              "&:hover": !item.active
-                ? {
-                    transform: "translateY(-3px)",
-                    boxShadow: "0px 8px 20px rgba(0,0,0,0.12)",
-                  }
-                : {},
+              "&:hover": {
+                transform: "translateY(-3px)",
+                background:
+                  "linear-gradient(90deg, #F2E4CE 0%, #F7F7F7 50%, #EDE3D2 100%)",
+                boxShadow: "0px 8px 20px rgba(88, 67, 34, 0.2)",
+                backdropFilter: "blur(6px)",
+              },
             }}
           >
             <Box
